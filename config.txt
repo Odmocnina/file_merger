@@ -1,0 +1,10 @@
+#konfiguracni soubor pro prgram na slouceni souboru
+project directory=C:\Users\Michael\Documents\prace\file_merger
+#konfigurace
+file=C:\Users\Michael\Documents\prace\file_merger\merged_files.txt
+source=C:\Users\Michael\Documents\prace\file_merger\data
+ext=test
+#konfigurace
+file=C:\Users\Michael\Documents\prace\file_merger\merged_files2.txt
+source=C:\Users\Michael\Documents\prace\file_merger\data
+ext=test

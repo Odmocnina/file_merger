@@ -1,0 +1,9 @@
+#Directory: data
+#Script: file1.test
+file1
+#Directory: data
+#Script: file2.test
+file2
+#Directory: data
+#Script: file3.test
+file3
