@@ -4,8 +4,8 @@ from load_request import Load_request
 # a vrati seznam Load_request objektu
 class config_loader:
     config_file = None # cesta k souboru s konfiguraci
-    config_signature = "#konfiguracni soubor pro prgram na slouceni souboru" # znak, ktery oznacuje zacatek konfiguracniho souboru
-    new_config_mark = "#konfigurace" # znak, ktery oznacuje zacatek nove konfigurace
+    config_signature = "#file_merger_config" # znak, ktery oznacuje zacatek konfiguracniho souboru
+    new_config_mark = "#section" # znak, ktery oznacuje zacatek nove konfigurace
     project_directory_mark = "project directory" # znak, ktery oznacuje cestu k projektu
     file_mark = "file" # znak, ktery oznacuje typ souboru, ktery bude zpracovan
     source_mark = "source" # znak, ktery oznacuje zdrojovy adresar
@@ -33,6 +33,8 @@ class config_loader:
         for line in lines:
             print(line)
             line = line.strip()
+            if line == "":
+                continue
             if i == 0 and not line.startswith(self.config_signature):
                 print("Invalid configuration file format, missing signature.")
                 return []
@@ -65,5 +67,14 @@ class config_loader:
                     source = None
                     file_types = None
             i = i + 1
+
+        if outfile is not None and source is not None and file_types is not None:
+            print("Creating new configuration")
+            configs.append(
+                Load_request(outfile, source, file_types, project_directory + "\\")
+            )
+        else:
+            print("Incomplete configuration found, skipping...")
+            print("Expected: outfile, source, file_types")
 
         return configs

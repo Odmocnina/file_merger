@@ -1,12 +1,12 @@
-#konfiguracni soubor pro prgram na slouceni souboru
-project directory=d:\Dropbox\Shared-AI\klatovynet\
+#file_merger_config
+project directory=C:\Users\Michael\Dropbox\Shared-AI\klatovynet
 
-#konfigurace
-file=d:\Dropbox\Shared-AI\klatovynet\ai\units_diskuse.txt
-source=d:\Dropbox\Shared-AI\klatovynet\units|d:\Dropbox\Shared-AI\klatovynet\diskuse
+#section
+file=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\ai\units_diskuse.txt
+source=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\units|C:\Users\Michael\Dropbox\Shared-AI\klatovynet\diskuse
 ext=asp|css|aspx|js
 
-#konfigurace
-file=d:\Dropbox\Shared-AI\klatovynet\ai\common_16.txt
-source=d:\Dropbox\Shared-AI\klatovynet\common_16
+#section
+file=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\ai\common_16.txt
+source=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\common_16
 ext=asp|css|aspx|js

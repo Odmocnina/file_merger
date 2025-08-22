@@ -30,8 +30,14 @@ class Load_request:
             for folder in self.input_folders:
                 for file in os.listdir(folder):
                     if any(file.endswith(ext) for ext in self.accepted_file_types):
+                        outfile.write("---")
+                        outfile.write("---")
+                        outfile.write("\\")
                         outfile.write("#Directory: " + folder.replace(self.project_directory, "") + "\n")
                         outfile.write("#Script: " + file.replace(self.project_directory, "") + "\n")
+                        outfile.write("\\")
+                        outfile.write("---")
+                        outfile.write("---")
                         file_path = os.path.join(folder, file)
                         with open(file_path, 'r') as infile:
                             outfile.write(infile.read())
