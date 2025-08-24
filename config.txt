@@ -1,12 +1,12 @@
 #file_merger_config
-project directory=C:\Users\Michael\Dropbox\Shared-AI\klatovynet
+project_directory=C:\Users\Michael\Dropbox\Shared-AI\klatovynet
 
 #section
-file=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\ai\units_diskuse.txt
-source=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\units|C:\Users\Michael\Dropbox\Shared-AI\klatovynet\diskuse
+file=[pd]\ai\units_diskuse.md
+source=[pd]\units|[pd]\diskuse
 ext=asp|css|aspx|js
 
 #section
-file=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\ai\common_16.txt
+file=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\ai\common_16.md
 source=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\common_16
 ext=asp|css|aspx|js

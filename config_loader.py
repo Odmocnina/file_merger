@@ -6,7 +6,7 @@ class config_loader:
     config_file = None # cesta k souboru s konfiguraci
     config_signature = "#file_merger_config" # znak, ktery oznacuje zacatek konfiguracniho souboru
     new_config_mark = "#section" # znak, ktery oznacuje zacatek nove konfigurace
-    project_directory_mark = "project directory" # znak, ktery oznacuje cestu k projektu
+    project_directory_mark = "project_directory" # znak, ktery oznacuje cestu k projektu
     file_mark = "file" # znak, ktery oznacuje typ souboru, ktery bude zpracovan
     source_mark = "source" # znak, ktery oznacuje zdrojovy adresar
     ext_mark = "ext" # znak, ktery oznacuje typ souboru, ktery bude zpracovan
@@ -55,7 +55,7 @@ class config_loader:
                 if outfile is not None and source is not None and file_types is not None:
                     print("Creating new configuration")
                     configs.append(
-                        Load_request(outfile, source, file_types, project_directory + "\\")
+                        Load_request(outfile, source, file_types, project_directory)
                     )
                     outfile = None
                     source = None
@@ -71,7 +71,7 @@ class config_loader:
         if outfile is not None and source is not None and file_types is not None:
             print("Creating new configuration")
             configs.append(
-                Load_request(outfile, source, file_types, project_directory + "\\")
+                Load_request(outfile, source, file_types, project_directory)
             )
         else:
             print("Incomplete configuration found, skipping...")
