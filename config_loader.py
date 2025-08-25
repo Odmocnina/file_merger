@@ -31,7 +31,6 @@ class config_loader:
         project_directory = None
         i = 0
         for line in lines:
-            print(line)
             line = line.strip()
             if line == "":
                 continue
@@ -46,10 +45,13 @@ class config_loader:
                     project_directory = line.split("=", 1)[1].strip()
                     print(f"Project directory found: {project_directory}")
             if line.startswith(self.file_mark):
+                print("Output file found")
                 outfile = line.split("=", 1)[1].strip()
             elif line.startswith(self.source_mark):
+                print("Source directory found")
                 source = line.split("=", 1)[1].strip()
             elif line.startswith(self.ext_mark):
+                print("File types found")
                 file_types = line.split("=", 1)[1].strip()
             if (line.startswith(self.new_config_mark) or i == len(lines) - 1) and i > 2:
                 if outfile is not None and source is not None and file_types is not None:
@@ -63,6 +65,12 @@ class config_loader:
                 else:
                     print("Incomplete configuration found, skipping...")
                     print("Expected: outfile, source, file_types")
+                    if outfile is None:
+                        print("Missing: outfile")
+                    if source is None:
+                        print("Missing: source")
+                    if file_types is None:
+                        print("Missing: file_types")
                     outfile = None
                     source = None
                     file_types = None
@@ -70,11 +78,15 @@ class config_loader:
 
         if outfile is not None and source is not None and file_types is not None:
             print("Creating new configuration")
-            configs.append(
-                Load_request(outfile, source, file_types, project_directory)
-            )
+            configs.append(Load_request(outfile, source, file_types, project_directory))
         else:
             print("Incomplete configuration found, skipping...")
             print("Expected: outfile, source, file_types")
+            if outfile is None:
+                print("Missing: outfile")
+            if source is None:
+                print("Missing: source")
+            if file_types is None:
+                print("Missing: file_types")
 
         return configs
