@@ -44,7 +44,6 @@ class Load_request:
                 print(f"Processing folder: {folder}")
                 for file in os.listdir(folder):
                     if any(file.endswith(ext) for ext in self.accepted_file_types):
-                        print(f"Adding file: {file}")
                         outfile.write("---\n")
                         outfile.write("---\n")
                         #outfile.write("\\n")
@@ -55,11 +54,9 @@ class Load_request:
                         outfile.write("---\n")
                         file_path = os.path.join(folder, file)
                         with open(file_path, 'r') as infile:
-                            print(f"Reading file: {file_path}")
                             outfile.write(infile.read())
                             outfile.write("\n")
                             i = i + 1
-                            print(f"File {file} added successfully.")
-            print("All files from folder: {folder} processed.")
+                print(f"All files from folder: {folder} processed.")
 
         print(f"Merging completed. {i} files were merged into {self.output_file}.")
