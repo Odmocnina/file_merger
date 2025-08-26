@@ -26,6 +26,7 @@ class Load_request:
             self.input_folders[i] = self.process_file_or_foler(self.input_folders[i])
         self.accepted_file_types = accepted_file_types.split("|")
 
+    # metoda pro zpracovani cesty k souboru nebo adresari
     def process_file_or_foler(self, file_or_folder):
         if file_or_folder.startswith(self.use_poject_directory_mark):
             file_or_folder = file_or_folder.replace(self.use_poject_directory_mark, self.project_directory)
