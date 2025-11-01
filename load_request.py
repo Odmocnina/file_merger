@@ -39,25 +39,40 @@ class Load_request:
     def merge_input_files(self):
         i = 0
         print("Starting to merge files...")
-        with open(self.output_file, 'w') as outfile:
+        # zajisti, že výstupní složka existuje
+        os.makedirs(os.path.dirname(self.output_file), exist_ok=True)
+
+        # výstup vždy UTF-8
+        with open(self.output_file, 'w', encoding='utf-8', newline='\n') as outfile:
             print(f"Merging files into: {self.output_file}")
             for folder in self.input_folders:
                 print(f"Processing folder: {folder}")
                 for file in os.listdir(folder):
                     if any(file.endswith(ext) for ext in self.accepted_file_types):
-                        outfile.write("---\n")
-                        outfile.write("---\n")
-                        #outfile.write("\\n")
+                        outfile.write("---\n---\n")
                         outfile.write("#Directory: " + folder.replace(self.project_directory + "\\", "") + "\n")
                         outfile.write("#Script: " + file.replace(self.project_directory + "\\", "") + "\n")
-                        #outfile.write("\\n")
-                        outfile.write("---\n")
-                        outfile.write("---\n")
-                        file_path = os.path.join(folder, file)
-                        with open(file_path, 'r') as infile:
-                            outfile.write(infile.read())
-                            outfile.write("\n")
-                            i = i + 1
-                print(f"All files from folder: {folder} processed.")
+                        outfile.write("---\n---\n")
 
+                        file_path = os.path.join(folder, file)
+
+                        # 1) pokus o UTF-8
+                        try:
+                            with open(file_path, 'r', encoding='utf-8') as infile:
+                                outfile.write(infile.read())
+                        except UnicodeDecodeError:
+                            # 2) fallback na CP1250 (Windows – čeština)
+                            try:
+                                with open(file_path, 'r', encoding='cp1250') as infile:
+                                    outfile.write(infile.read())
+                                    print(f"Warning: file '{file}' decoded as CP1250.")
+                            except UnicodeDecodeError:
+                                # 3) nouzově latin-1 (vše dekóduje, ale znaky můžou být špatně)
+                                with open(file_path, 'r', encoding='latin-1', errors='replace') as infile:
+                                    outfile.write(infile.read())
+                                    print(f"Warning: file '{file}' decoded as latin-1 with replacements.")
+
+                        outfile.write("\n")
+                        i += 1
+                print(f"All files from folder: {folder} processed.")
         print(f"Merging completed. {i} files were merged into {self.output_file}.")

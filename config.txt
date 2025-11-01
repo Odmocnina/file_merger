@@ -1,12 +1,7 @@
 #file_merger_config
-project_directory=C:\Users\Michael\Dropbox\Shared-AI\klatovynet
+project_directory=C:\Users\Michael\Documents\prace\file_merger\css_stuff_to_merge\css
 
 #section
-file=[pd]\ai\units_diskuse.md
-source=[pd]\units|[pd]\diskuse
-ext=asp|css|aspx|js
-
-#section
-file=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\ai\common_16.md
-source=C:\Users\Michael\Dropbox\Shared-AI\klatovynet\common_16
+file=C:\Users\Michael\Documents\prace\file_merger\css_stuff_to_merge\output\merged_styles.css
+source=[pd]
 ext=asp|css|aspx|js
