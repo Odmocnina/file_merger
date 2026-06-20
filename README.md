@@ -2,6 +2,8 @@
 
 This project is a simple Python tool for automatically merging the content of multiple files from different directories into a single output file. It is ideal for merging `.css`, `.js`, or other text files.
 
+@Author: Michael Hladky
+
 ## 🌟 Key Features
 * **Extension-based Merging:** The tool processes only files with the specified extensions (e.g., `asp|css|aspx|js`).
 * **Smart Text Encoding:** The script primarily reads files in `UTF-8`. If it encounters an error, it automatically falls back to `CP1250` (Windows Central European) and, as a last resort, `latin-1`.
